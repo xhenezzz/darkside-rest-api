@@ -1,0 +1,1051 @@
+/* замедлил скроллинг, чтоб было плавное премещение */
+html{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100%;
+}
+/* выделение, теперь когда выделяется  текст, он не белый не синем */
+*::selection{
+    color: rgb(110, 8, 8);
+    background-color: #bd3a3a;
+}
+body{
+    
+    margin: 0;
+    /* кастомный шрифт, тут я его добавил в боди, тоесть все, что находится
+    в пределах боди будет принимать этот шрифт */
+    font-family: 'Nerko One', cursive;
+    /* это неважно, данный фон все равно не будет видно, так как я установил
+    свой фон. Это просто сплошной цвет */
+    background: rgb(0, 0, 0);
+    
+    /* Размер шрифта */
+    font-size: 15px;
+    /* Отступы шрифта по высоте, чтоб не слипались */
+    line-height: 1.6;
+    color:#333;
+}
+
+/* звездочка означет, что я присваиваю всем значения, заданные в фигурных скобках*/
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+}
+
+
+/* тут тоже самое, присвоил размерам отступы 0 по дефолту */
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+}
+
+/* Это мое рабочее пространство, где нахоидятся такие классы как название сайта
+навигационные элементы, кнопка learn more и slider, который расположен ниже */
+.container{
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.containerBars{
+    width: 100%;
+    max-width: 1700px;
+    margin: 0 auto;
+}
+
+/* задал css */
+.arrowUp{
+    text-shadow: 0 0 30px #500303;
+    opacity: 0.6;
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    color: #741b1b;
+    width: 20px;
+    height: 20px;
+    -webkit-background-size: 300%;
+    background-size: 300%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size:50px;
+    border-radius: 5px;
+    transition: .5s; 
+    z-index: 9999;
+}
+.arrowUp{
+    background-position: 100% 0;
+}
+.arrowUp:hover{
+    opacity: 1;
+    -webkit-transform:scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.cards{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    justify-content: center;
+    width: 100%;
+    display: -webkit-box; 
+    display: -webkit-flex; 
+    display: -ms-flexbox; 
+    display: flex; 
+    -webkit-box-align: center; 
+    -webkit-align-items: center; 
+    -ms-flex-align: center; 
+    align-items: center; 
+    -webkit-box-pack: center; 
+    -webkit-justify-content: center; 
+    -ms-flex-pack: center; 
+    margin: 20px 20px 0;
+}
+.section__header2{
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto 0;
+    text-align: center;
+}
+
+.section__suptitle2{
+    text-shadow: 0 0 60px #4d4807;
+    font-size: 70px;
+    color: #8a2d0b;
+}
+.section__title2{
+    text-shadow: 0 0 50px #4d4807;
+    font-size: 35px;
+    color: #8f3110;
+    margin-bottom: 40px;
+}
+ /*тут начинается красота. Это моя карточка, как обычно, для красоты 
+ текст посередине, отступы побокам, чтоб карточки не слипались */
+.card1{
+    margin: 0 30px 0;
+    text-align: center;
+    /* а тут я добавил градиент, тоесть мои карточки имеют свойство рлавно менять цвет со временем */
+    background: linear-gradient(90deg,#191b1b,#2c2e30) ;
+    /* тут впринципе неважно, просто время, которое проходится полностью все цвета градиента */
+    animation: gradient 10s ease infinite;
+    /* тут так надОЮ если установаить значение 100%, то мы будем видеть квадратиков 100, которые 
+    переливаются с одного цвета на другой, в общем ставим 400 и норм, это примерно размер 1 квадратика */
+    background-size: 400% 400%;
+}
+/* здесь мини скрипт, это как свитчкейсы */
+@keyframes gradient {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position:0% 50%;
+    }
+}
+/* это слайдер, дисплей флекс означает, что класс будет перемещаться вместе с различными
+деформациями сайт, например если сделать окно меньше, то slider не потеряет свою позицию */
+.slider{
+    display: flex;
+    /* расскидал по разным сторонам класса intro, если б слайдер назоидлся
+    вне этого класса, то в итоге мы бы видели слайдер, прижатый по бокам, а так
+    он прижат к невидимому барьеру */
+    justify-content: space-between;
+    /* отступ сверху */
+    margin-top: 30px;
+}
+
+/* это просто декорация, слайдера, полоска и буквы */
+.slider__item{
+    width: 23%;
+    padding: 20px 0;
+    /* относительное позиционирование сдвигает элемент 
+    относительно его обычного положения */
+    position: relative;
+    /* это как-бы таблица, но из-за параметра solid она заполнена и имеет высоту 3px */
+    border-top: 3px solid #b8aeae;
+    /* это видимость, равная 0.6 (1 - дефолт). Сделал я это для того, чтоб показать юзеру
+    на каком он слайде. Тоесть активный будет иметь видимость 1 */
+    opacity: .6;
+    font-size: 20px;
+    color: #fff;
+    /* переводит все в верхний регистр */
+    text-transform: uppercase;
+}
+
+.slider__item.active{
+    /* вот и она */
+    opacity: 1;
+}
+
+/* цифры в слайдере */
+.slider__num{
+    font-size: 24px;
+    font-weight: 700;
+}
+.imgg{
+    background: url(../images/sect4.jpg) ;
+    height: 100vh;
+}
+/* здесь расположен мой фон */
+.intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+}
+/* текст расположеннный по середине */
+.intro__inner{
+    color: #b8aeae;
+    width: 100px;
+    min-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/* текст расположенный выше центрального, тот что поменьше. Имеет другой шрифт */
+.intro__suptitle{
+    text-shadow: 0 0 30px #500303;
+    font-size: 62px;
+    color: #b8aeae;
+    font-family:'Merriweather:ital',cursive;
+    position: relative;
+}
+
+/* Текст посередине */
+.intro__title{
+    color: #b8aeae;
+    text-shadow: 0 0 20px #4d0303;
+    font-size: 150px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+/* это линия, которая находится ниже большого текста */
+.intro__title:after{
+    content:"";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #b8aeae;
+    margin: 60px auto 0;
+
+}
+
+.header{
+    padding-top: 30px;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+}
+
+.header_inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo{
+    text-shadow: 0 0 30px #500303;
+    font-family: 'Creepster', cursive;
+    text-decoration: none;
+    font-size: 35px;
+    font-weight: 700;
+    color:#b8aeae;
+    /* Здесь сделал затемнение, при навождении равное 0.2с(текст). */
+    transition:color .2s linear;
+}
+
+.header__logo:after{
+    content: "";
+    display: block;
+    height: 3px;
+    opacity: 0;
+
+    background-color: #bb7428;
+
+    position: absolute;
+    top: 100%;
+    left:0;
+    z-index:1;  
+    /* тут тоже самое но с полоской, котрая появляется, когда наводишь на текст */
+    transition: backgorund-color .2s linear;
+}
+/* такой цевт прнимает текст, когда на него нводятся */
+.header__logo:hover{
+    color:#bb7428;
+}
+/* а такой принмает полоска ниже */
+.header__logo:hover:after{
+    opacity: 1;
+    
+}
+/* это блок навигации */
+.nav{
+    font-family: 'Creepster', cursive;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.favorites,.cart,.open_pop_up{
+    text-decoration: none;
+    margin: 0 5px 0;
+    color: #bb7428;
+    transition: .3s;
+}
+.fas.fa-box:hover,.fas.fa-shopping-basket:hover,.fas.fa-user:hover{
+    color: #850905;
+    transition: .3s;
+}
+/* экран входа*/
+.pop_up{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(51, 51, 51, 0.801);
+    z-index:2;
+    /* это анимация, его сначала нет, но при нажатии, появляется окно
+    из середины */
+    transform: translateY(0%) scale(0);
+    /* время */
+    transition: .2s ease-in-out;
+}
+/* это увеличивает окно, по дефолту оно равно 0 */
+.pop_up.active{
+    transform: translateY(0%) scale(100%);
+}
+/* Карточка, которая покрывает всю страницу */
+.pop_up_container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+/* Сама карточка, на котрой нахоядся все кнопки */
+.pop_up_body{
+    margin: auto;
+    width: 500px;
+    /* будет переливаться */
+    background: linear-gradient(90deg,#d8ada8,#6d8d9e) ;
+    animation: gradient 10s ease infinite;
+    background-size: 400% 400%;
+    border-radius: 10px;
+    text-align: center;
+    padding: 80px 15px 110px 15px;
+    position: relative;
+}
+/* это Log In */
+.pop_up_body h1{
+    font-family: 'Nerko One';
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+/* Это поля для ввода */
+.pop_up_body input {
+    display: block;
+    margin: 25px auto 0px auto;
+    width: 330px;
+    padding: 17px 20px;
+    background-color: #E5E5E5;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Balsamiq';
+    font-size: 18px;
+    color: #89909F;
+}
+/* кнопка */
+.pop_up_body button{
+    cursor: pointer;
+    display: block;
+    width: 330px;
+    margin: 60px auto 20px;
+    padding: 20px 0px; 
+    font-family: 'Nerko One'; 
+    font-size: 20px; 
+    border: none; 
+    color: #fff; 
+    border-radius: 10px;
+    background-color: orange;
+}
+/* это крестик для выхода из окна входа */
+.pop_up_close{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 21px;
+    cursor: pointer;
+    color: #110f0f;
+}
+/* цвет при наведении курсором, меняет кнопку*/
+.pop_up_body button:hover{
+    background-color: rgb(226, 147, 0);
+}
+/* ссылка на регистрацию */
+.reg{
+    color: #000000;
+}
+.nav__link{
+    text-shadow: 0 0 30px #500303;
+
+    /* все элементы располагаются горизонтально, друг за другом. */
+    display: inline-block;
+
+    vertical-align: none;
+    margin: 0 15px;
+    position: relative;
+
+    color: #b8aeae;
+    /* убирает декорации, по дефолту в ссылках присутсвтует полоска */
+    text-decoration: none;
+    /* появление нового цвета */
+    transition:color .1s linear;
+}
+
+.firstPage{
+    text-decoration: none;
+}
+.secondPage{
+    text-decoration: none;
+}
+.thirdPage{
+    text-decoration: none;
+}
+/* полоска ниже навигатора */
+.nav__link:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    opacity: 0;
+
+    background-color: #bb7428;
+
+    position: absolute;
+    top: 100%;
+    left:0;
+    z-index:1;  
+
+    transition: opacity .1s linear;
+}
+
+.nav__link:hover{
+    color:#bb7428;
+}
+
+.nav__link:hover:after,
+.nav__link.active:after{
+    opacity: 1;
+    
+}
+.nav__link.active{
+    color:#bb7428
+}
+
+/* кнопка */
+.btn{
+    display: inline-block;
+    vertical-align: top;
+    padding: 8px 30px;
+    color:#b8aeae;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 3px solid #b8aeae;
+    margin: 60px auto;
+    transition: background .2s linear, color .2s linear;
+}
+/* меняется текст с белого на черный, когда юзер наводится */
+.btn:hover{
+    background-color: #bb7428;
+    color:#333;
+}
+
+.section{
+    background: url(../images/jutkiy.jpg);
+    padding: 80px 0;
+    min-height: 100vh;
+}
+
+.section__header{
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto 0;
+    text-align: center;
+}
+
+.section__suptitle{
+    font-family: 'Creepster', cursive;
+    text-shadow: 0 0 70px #850905;
+    font-size: 55px;
+    color: #741b1b;
+}
+.section__title{
+    text-shadow: 0 0 50px #850905;
+    font-size: 40px;
+    color: #741b1b;
+}
+.section__text{
+    text-shadow: 0 0 40px #850905;
+    font-size: 30px;
+    color: #741b1b;
+}
+
+.section__title:after{
+    content: "";
+    display:block;
+    width: 120px;
+    height: 3px;
+    margin: 10px auto;
+
+
+    background-color: #741b1b;
+}
+/* вот моя 3 секция, я ей дал фон, внутренние отступы, и новый шрифт, а также 100vh разрешение(1 страница) */
+.section3{
+    font-family: Balsamiq;
+    height: 100vh;
+    background:url(../images/jutkiy.jpg);
+    padding: 50px 0;
+}
+/* карточка */
+.card1{
+    width: 500px;
+    /* закруглил углы */
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.space{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height:200px;
+    width: 100%;
+    margin: 0 auto 50px;
+    padding: 0;
+}
+/* фото блогера, также загруглил, сделал круглым */
+.bloggers{
+    width: 120px;
+    border-radius: 60px;
+}
+/* имя блогера */
+.bloggersInfo{
+    color: #eb830d;
+    font-size: 35px;
+    margin: 10px;
+}
+/* информация */
+.bloggersInfo-sub{
+    color: #b9680a;
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+/* кнопка */
+.btnKeeper{
+    margin: 15px;
+}
+/* при наведении меняет цвет */
+.bloggersbtn:hover{
+    background: #381301;
+    color: #725b09;
+}
+/* текст кнопки */
+.bloggersbtn{
+    color: #b9680a;
+    font-size: 22px;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 10px 20px 10px;
+    text-decoration: none;
+}
+.Bars{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height:200px;
+    width: 100%;
+    margin: 0 auto 50px;
+    padding: 0;
+}
+/* тут ниже это, сделано специально, чтоб когда юзер наводил мышь, карточка увеличивалась */
+.wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    justify-content: center;
+    width: 100%;
+    display: -webkit-box; 
+    display: -webkit-flex; 
+    display: -ms-flexbox; 
+    display: flex; 
+    -webkit-box-align: center; 
+    -webkit-align-items: center; 
+    -ms-flex-align: center; 
+    align-items: center; 
+    -webkit-box-pack: center; 
+    -webkit-justify-content: center; 
+    -ms-flex-pack: center; 
+}
+
+/* просто создаю саму карточку */
+.informBlock,.informBlock1,.informBlock2,.informBlock3,.informBlock4,.informBlock5,.informBlock6{
+    width: 100%;
+    border-radius: 10px;
+    height: auto;
+    background: #333 ;
+    padding: 30px;
+    box-sizing: border-box;
+    transition: .4s;
+    margin: auto 25px auto;
+    background: linear-gradient(90deg,#2b1c1a,#232729) ;
+    animation: gradient 10s ease infinite;
+    background-size: 400% 400%;
+}
+.First,.Second,.Third{
+    width: 100%;
+    height: auto;
+    background: #333 ;
+    padding: 30px;
+    box-sizing: border-box;
+    transition: .4s;
+    margin: auto 25px auto;
+}
+/* Текст */
+.mainText{
+    text-align: center;
+    font-size: 30px;
+}
+/* текст который ниже, информация */
+.secondtext{
+    font-size: 20px;
+}
+/* цвета */
+.mainText,.secondtext{
+    color: #bebcb5;
+}
+/* .informBlock i{
+    color: #bb7428;
+    font-size: 20px;
+    margin-top: 20px;
+    transition: .4s;
+} */
+
+/* тут 6 одно того же, для того чтоб карточка загоралась*/
+.informBlock1:hover{
+    background: #bd3a3a;
+}
+.informBlock2:hover{
+    background: #bd3a3a;
+}
+.informBlock3:hover{
+    background: #bd3a3a;
+}
+.informBlock4:hover{
+    background: #bd3a3a;
+}
+.informBlock5:hover{
+    background: #bd3a3a;
+}
+.informBlock6:hover{
+    background: #bd3a3a;
+}
+/* тут я корректирую вручную фотки, чтоб они подходили для рамки */
+.photo{
+    display:inline-block;
+    width:500px;
+    height: 290px;
+    align-items: center;
+}
+.photo2{
+    display:inline-block;
+    width:500px;
+    align-items: center;
+}
+.photo3{
+    width:500px;
+    height: 260px;
+    align-items: center;
+}
+.photo4{
+    width:500px;
+    height: 290px;
+    align-items: center;
+}
+.photo5{
+    width:500px;
+    height: 290px;
+    align-items: center;
+}
+.photo6{
+    display:inline-block;
+    width:500px;
+    height: 290px;
+    align-items: center;
+}
+/* тут увелечение карточки при навождении на нее */
+.informBlock1:hover{
+    -webkit-transform:scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    
+}
+.informBlock2:hover{
+    -webkit-transform:scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.informBlock3:hover{
+    -webkit-transform:scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.informBlock4:hover{
+    -webkit-transform:scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    
+}
+.informBlock5:hover{
+    -webkit-transform:scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.informBlock6:hover{
+    -webkit-transform:scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+/* убрал дефолтный скролбар */
+::-webkit-scrollbar{
+    width: 15px;
+}
+/* сама дорого скролбара по которой он будет идти */
+::-webkit-scrollbar-track{
+    background: #110f0f;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
+    border-radius: 5px;
+}
+/* сам скролл, который можно перемещать */
+::-webkit-scrollbar-thumb{
+    background: #696864; ;
+    border-radius: 8px;
+    border: 3px solid #31312f;
+}
+/* меняет цвет при навождении    */
+::-webkit-scrollbar-thumb:hover{
+    background: #741b1b;
+}
+
+.sectionShop{
+    background: url(../images/sect4.jpg);
+    min-height: 100vh;
+    padding: 50px 0 50px;
+}
+.section__header1{
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto 0;
+    text-align: center;
+}
+
+.section__suptitle1{
+    text-shadow: 0 0 40px #bb7428;
+    font-size: 70px;
+    color: #a3692a;
+}
+.section__title1{
+    text-shadow: 0 0 70px #bb7428;
+
+    font-size: 35px;
+    color: #966023;
+    margin-bottom: 40px;
+}
+.cardws{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    justify-content: center;
+    width: 100%;
+    display: -webkit-box; 
+    display: -webkit-flex; 
+    display: -ms-flexbox; 
+    display: flex; 
+    -webkit-box-align: center; 
+    -webkit-align-items: center; 
+    -ms-flex-align: center; 
+    align-items: center; 
+    -webkit-box-pack: center; 
+    -webkit-justify-content: center; 
+    -ms-flex-pack: center; 
+}
+
+.cardw{
+    margin: 35px;
+    width: 400px;
+    height: 480px;
+    background-color: #122936;
+    color:#fff;
+    border-radius: 20px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: .5s;
+    overflow: hidden;
+}
+.cardw::before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #232729;
+    transform: skewY(345deg);
+    position: absolute;
+    top: -50%;
+    transition: .5s;
+}
+.cardw:hover .cardwPic{
+    width: 250px;
+    transition: .5s;
+
+}
+.cardw:hover{
+    transition: .5s;
+    -webkit-transform:scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.cardw:hover::before{
+    transform: skewY(390deg);
+    top: -70%;
+    transition: .5s;
+
+}
+.cardwPic{
+    border-radius: 20px;
+    margin: 20px;
+    width: 300px;
+    position: relative;
+    transition: .5s;
+
+}
+.card_name{
+    font-family: Balsamiq;
+    font-size: 22px;
+    margin: 0 0 10px;
+    position: relative;
+}
+.card_price{
+    font-size: 26px;
+    margin: 0 0 20px;
+    position: relative;
+}
+.card_currency{
+    font-size: 20px;
+    position: relative;
+}
+.card_btn{
+    font-family: Balsamiq;
+    border: none;
+    cursor: pointer;
+    background-color: #741b1b;
+    border-radius: 30px;
+    padding: 15px 30px;
+    color: inherit;
+    text-transform: inherit;
+    font-weight:inherit;
+    transition: .5s;
+    position: relative;
+    top: 40px;
+
+}
+.card_btn:hover{
+    background-color: #725b09;
+    transition: .5s;
+}
+.cardw:hover .card_btn{
+    top: 0px;
+}
+/* Карточка */
+.wrapper{
+    position:fixed;
+    bottom: 30px;
+    left: 30px;
+    max-width: 365px;
+    background: rgb(107, 102, 102);
+    padding: 25px 25px 30px 25px;
+    border-radius: 15px;
+    box-shadow: 1px 7px 14px -5px rgba(0,0,0,0.15);
+    text-align: center;
+    font-family: 'Balsamiq';
+    background: linear-gradient(90deg,#777777,#72828d) ;
+    animation: gradient 10s ease infinite;
+    z-index: 2000;
+}
+/* Карточка исчезает, после нажатия */
+.wrapper.hide{
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+/* кнопка I understand */
+::selection{
+    color: #fff;
+    background: #FCBA7F;
+}
+/* Фото печеньки */
+.wrapper img{
+    max-width: 120px;
+    -webkit-animation: pulsing 2s infinite;
+    animation: pulsing 2s infinite;
+}
+/* Скрип для печеньки, печенье начинает пульсировать */
+@-webkit-keyframes pulsing {
+        0% {
+          -webkit-transform: scale(0.7, 0.7);
+          transform: scale(0.7, 0.7)
+        }
+        50% {
+          -webkit-transform: scale(1.0, 1.0);
+          transform: scale(1.0, 1.0);
+        }
+        100% {
+          -webkit-transform: scale(0.7, 0.7);
+          transform: scale(0.7, 0.7);
+        }
+      }
+      
+      @keyframes pulsing {
+        0% {
+          -webkit-transform: scale(0.7, 0.7);
+          transform: scale(0.7 0.7)
+        }
+        50% {
+          -webkit-transform: scale(1.0, 1.0);
+          transform: scale(1.0, 1.0);
+        }
+        100% {
+          -webkit-transform: scale(0.7, 0.7);
+          transform: scale(0.7, 0.7);
+        }
+}
+/* Главное название */
+.content header{
+    font-size: 35px;
+    font-weight: 600;
+}
+/* Тут находится вся информация, кнопки, текст и название */
+.content{
+    margin-top: 10px;
+}
+/* Нажиме названия, написано, зачем на сайте куки */
+.content p{
+    color: #000000;
+    font-size: 18px;
+    margin: 5px 0 20px 0;
+}
+/* кнопки */
+.content .buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*кнопки */
+.buttons button{
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    background: #FCBA7F;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+/* маленькое уменьшение при наведении */
+.buttons button:hover{
+    transform: scale(0.97);
+}
+/* Отступые побокам у кнопок */
+.buttons .item{
+    margin: 0 10px;
+}
+/* Кнопка learn more */
+.buttons a{
+    color: #FCBA7F;
+}
+.background-clip{
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: -1;
+}
+.cart,.favorites,.crest{
+    vertical-align:middle;
+}
+.cart{
+    transition: .3s;
+    width: 31px;
+    margin-right: 10px ;
+}
+.favorites{
+    width: 36px;
+}
+.crest{
+    transition: .3s;
+    margin-right: 15px;
+    width: 33px;
+}
+.cartLink{
+    text-decoration: none;
+}
+.favoritesLink{
+    text-decoration: none;
+}
+.crestLink{
+    text-decoration: none;
+}
+.cart:hover{
+    -webkit-transform:scale(1.3);
+    -ms-transform: scale(1.3);
+    transform: scale(1.3);
+}
+.favorites:hover{
+    -webkit-transform:scale(1.3);
+    -ms-transform: scale(1.3);
+    transform: scale(1.3);
+}
+.crest:hover{
+    -webkit-transform:scale(1.3);
+    -ms-transform: scale(1.3);
+    transform: scale(1.3);
+}
+.header_inner{
+    width: 1670px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.containerBars{
+    width: 100%;
+    max-width: 1900px;
+    margin: 0 auto;
+}
+

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- подключение css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- подключение кастомного шрифта -->
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Merriweather:ital,wght@1,700&family=Nerko+One&display=swap&family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/24f63b1e87.js" crossorigin="anonymous"></script>
+    <!-- Название сайта -->
+    <title>Darkside</title>
+    <link rel="shortcut icon" type="image/ico" href="./assets/images/amogus.ico"/>
+</head>
+<!-- не деает нажать правую кнопку мыши на сайте -->
+<body class="body" oncontextmenu="return false">
+<video autoplay muted loop plays-inline class="background-clip">
+    <source src="./assets/images/bcg.mp4" type="video/mp4">
+</video>
+    <!-- Див враппер, это сама карпточка, в которой будет весь контент -->
+    <div class="wrapper">
+        <!-- фото -->
+        <img src="/images/cookie-removebg-preview.png" alt="">
+        <!-- это все что внутри ниже фото, название, для чего нужно, кнопки -->
+        <div class="content">
+            <!-- название -->
+          <header>Cookies Consent</header>
+          <!-- описание, для чего нужны куки -->
+          <p>This website use cookies to ensure you get the best experience on our website.</p>
+          <!-- отдельный класс кнопки, чтоб обращаться в css -->
+          <div class="buttons">
+            <!-- Кнопка -->
+            <button class="item">I understand</button>
+            <!-- Вторая "кнопка", но на деле ссылочная строка ( пока что никуда не ведет) -->
+            <a href="#" class="item">Learn more</a>
+          </div>
+        </div>
+      </div>
+    <!-- добавил музыку на бекграунд при запуске страницы -->
+    <audio autoplay loop>
+        <source src="/music/music.mp3" type="audio/mpeg">
+    </audio>
+<header class="header">
+    <div class="container">
+    <div class="header_inner">
+        <!-- Мини название сайта -->
+        <div class="header__logo">Darkside</div>
+        <!-- класс навигации, в хтмле, чтоб потом работать в css -->
+        <nav class="nav">
+            <!-- создание кнопок -->
+            <!-- Первая кнопка активна, потому что я захотел показать, как
+            будет выглядеть сайт, если юзер будет на определенной странице -->
+            <a class="nav__link active" href="#">About</a>
+            <a class="nav__link" href="https://discord.com/invite/valkogamestudios">Discord</a>
+            <a class="nav__link" href="https://www.youtube.com/@ValkoGameStudios">YouTube</a>
+            <a class="nav__link" href="https://store.steampowered.com/app/1302240/Labyrinthine/">Steam</a>
+            <!-- добавил иконки, с помощью html справочника, хотел изначально со стороннего сайта, но
+            создать иконку как кнопку у меня не получилось, поэтому сделал ее с тегом <a> -->
+            <a class="cartLink" target="_blank" href="#" id="cart">
+                <img class="cart" src="./assets/images/cart2.png" alt="">
+            </a>
+            <a class="favoritesLink" target="_blank" href="#"id="favorites">
+                <img class="favorites" src="assets/images/heart.png" alt="">
+            </a>
+            <a class="crestLink" target="_blank" href="#" id="open_pop_up">
+                <img class="crest" src="assets/images/crest.png" alt="">
+            </a>>
+        </nav>
+        
+    </div>
+    </div>
+    <!-- Создал окно, которое будет вылетат, если нажать на кнопку, скрипт в другом скрине -->
+    <!-- id написал, для того чтоб обращаться к нему через JS -->
+    <div class="pop_up" id="pop_up">
+        <div class="pop_up_container">
+            <!-- Карточка, которая хранмт в себе -->
+            <div class="pop_up_body" id="pop_up_body">
+                <!-- Текст -->
+                <h1>Log In</h1>
+                <form action="">
+                    <!-- логин -->
+                    <input type="text" placeholder="Login">
+                    <!-- Пароль -->
+                    <input type="password" placeholder="Password">
+                    <!-- Кнопка -->
+                    <button>Sign In</button>
+                    <!-- И ниже кнопка Регистрация, но пока что, она ничего не делает -->
+                    <a href="#" class="reg">Регистрация</a>
+                </form>
+                <!-- Крестик, для выхода -->
+                <div class="pop_up_close" id="pop_up_close">&#10006</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<section class="imgg">
+<div class="intro">
+    <div class="container">
+        <div class="intro__inner">
+            <!-- название с величиной h2 -->
+            <h2 class="intro__suptitle">Horror</h2>
+            <!-- тоже самое тлько h1 -->
+            <h1 class="intro__title">Welcome to the Darkside</h1>
+            <!-- тут создал ниже кнопку, которая будет переводить пользователя на 
+            другу страницу, если на нее нажать, как видите, я написал
+            href='#'. Вместо # вскоре будет ссылка -->
+            <a class="btn" href="#" type="submit" id="submit">Learn more</a>
+            <!-- тут я создал слайдер, но пока что без скрипта, первый элемент
+            также имеет свойство активности. Это сделано для того, чтоб юезр знал
+            на какой странице он находится. Активная страница будет подсвечиться снизу -->
+            <div class="slider">
+                <div class="slider__item active">
+                    <span class="slider__num">01</span>
+                    NoWayBack
+                </div>
+                <div class="slider__item">
+                    <span class="slider__num">02</span>
+                    CreatureList
+                </div>
+                <div class="slider__item">
+                    <span class="slider__num">03</span>
+                    Bloggers
+                </div>
+                <div class="slider__item">
+                    <span class="slider__num">04</span>
+                    The Darkside Shop
+                </div>
+            </div>
+            <!-- добавил кнопку стрелки, для быстрого перемещения на первую страницу -->
+            <a href="#" class="arrowUp">
+                <i class="fa-solid fa-arrow-up"></i>            
+            </a>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- создал новую секцию, для новой страницы -->
+<section class="section">
+    <!-- здесь будет текст -->
+    <div class="containerBars">
+        <!-- здесь тоже -->
+        <div class="section__header">
+            <h3 class="section__suptitle">Let's explore the paranormal's</h3>
+            <h2 class="section__title">Choose the creature</h2>
+            <div class="section__text">
+                <p>Click on the card</p>
+            </div>
+        </div>
+        <!-- тут я создаю карточки -->
+        <div class="Bars">
+        <div class="wrap">
+            <!-- Класс который хранит в себе карточки, таких будет 6. Поэтому опишу только одну , остальные одинаковы,просто хранят другую информацию -->
+            <div class="informBlock1">
+                <!-- ссылка на сайт с подробной информацией существа, в будущес буду создавать свои страницы с информацией -->
+                <a class="firstPage" href="https://fantasticbeings.fandom.com/ru/wiki/Чупакабра">
+                <!-- Фото существа -->
+                <img class="photo" src="http://lemur59.ru/sites/default/files/images/1-351_max.jpg" alt="Ben">
+                <!-- Имя -->
+                <h5 class="mainText">Chupakabra</h5>
+                <!-- Это можно, убрать, но я юзаю эту штуку просто как margin-top, просто чтоб сделать отступ -->
+                <div class="underlineBlock"></div>
+                <!-- Мини информация -->
+                <p class="secondtext">Неизвестное науке существо, персонаж городской легенды. Согласно легенде, чупакабра убивает животных и высасывает у них кровь.</p>
+            </a>
+            </div>
+            <div class="informBlock2">
+                <a class="secondPage" href="https://fantasticbeings.fandom.com/ru/wiki/Кракен">
+                <img class="photo2" src="https://bookcheater.ru/wp-content/uploads/2020/09/retsenziya_kraken_probuzhdaetsya_dzhon_uindem.jpg" alt="Ben">
+                <h5 class="mainText">Kraken</h5>
+                <div class="underlineBlock"></div>
+                <p class="secondtext">Огромное морское существо, напоминающее большого осьминога, способное утащить под воду корабль.</p>
+            </a>
+            </div>
+            <div class="informBlock3">
+                <a class="thirdPage" href="https://theslenderman.fandom.com/ru/wiki/Слендермен">
+                <img class="photo3" src="https://ua-informator-prod-media.fra1.cdn.digitaloceanspaces.com/media/tech/2019/12/slender-man.jpg" alt="Ben">
+                <h5 class="mainText">Slenderman</h5>
+                <div class="underlineBlock"></div>
+                <p class="secondtext">Высокий бледный мужчина с неестественно длинными руками. Он безлик и носит черный похоронный костюм. Он похищает детей, которых никогда больше не находят</p>
+            </a>
+            </div>
+        </div>
+    </div>
+    <!-- тут уже нижние карточки, тоесть три сверху три снизу -->
+    <div class="Bars">
+        <div class="wrap">
+            <div class="informBlock4">
+                <a class="firstPage" href="https://ru.wikipedia.org/wiki/Дзикининки">
+                <img class="photo6" src="https://static.wikia.nocookie.net/fantasticbeings/images/1/13/IMG_9765.JPG/revision/latest/scale-to-width-down/350?cb=20170913095609&path-prefix=ru" alt="Ben">
+                <h5 class="mainText">食人鬼/Jikininki</h5>
+                <div class="underlineBlock"></div>
+                <p class="secondtext">Привидения или нежить из японских легенд, питающиеся человеческими трупами. Это мерзкие существа в человеческом теле, горбатые и гниющие. </p>
+            </a>
+            </div>
+            <div class="informBlock5">
+                <a class="secondPage" href="https://fantasticbeings.fandom.com/ru/wiki/Вендиго">
+                <img class="photo4" src="https://gamerwall.pro/uploads/posts/2021-12/1639161568_1-gamerwall-pro-p-vendigo-misticheskoe-sushchestvo-fentezi-k-2.jpg" alt="Ben">
+                <h5 class="mainText">Wendigo</h5>
+                <div class="underlineBlock"></div>
+                <p class="secondtext">Существо, некогда бывшее человеком, в которого после поедания человечины вселился злой дух и в конечном итоге превратил его в кровожадного монстра.</p>
+            </a>
+            </div>
+            <div class="informBlock6">
+                <a class="thirdPage" href="https://ru.wikipedia.org/wiki/Цербер">
+                <img class="photo5" src="https://sun9-21.userapi.com/impg/2E0jfqCYJg7Pb2GJCNPSwZNUWXnq7Du3UiG1vA/DQ7Sw7qtGHI.jpg?size=807x539&quality=96&sign=04e41f6e6de99048bd1addf8ebd4bc7f&type=album" alt="Ben">
+                <h5 class="mainText">Cerberus</h5>
+                <div class="underlineBlock"></div>
+                <p class="secondtext">Трёхголовый пёс, охраняющий выход из царства мёртвых в Аиде. Он не позволяет умершим возвращаться в мир живых, а живым посещать мёртвых.</p>
+            </a>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<!-- как я и писал ранее, я добавил страницу с ютуберами, которые снимают различные видео на данную рубрику -->
+<section class="section3">
+    <div class="section__header2">
+        <h3 class="section__suptitle2">Popular Bloggers</h3>
+        <h2 class="section__title2">Here is the most 3 popular horror youtuber's</h2>
+</div>
+    <div class="space">
+        <div class="cards">
+            <!-- создаю карточку с ютубером -->
+            <div class="card1">
+                <!-- фото -->
+                <img class="bloggers" src="/images/massl.jpg" alt="">
+                <!-- имя -->
+                <div class="bloggersInfo">Дима Масленников</div>
+                <!-- текст который я сам придумывал, основываясь на знаниях блогера -->
+                <div class="bloggersInfo-sub">Наверное самый популярный ютубер по мрачным тематикам. 
+                    На его канале можно найти такие различные рубрики одной из которых является - GhostBusters (Самая интересная рубрика. Название отвечает за себя).
+                    Масленников побывал и заснял самый загадочный и популярный лес в мире, а именно Лес Самоубийц в Японии - Аокигахара. За месяц это видео набрало более 12 миллионов просмотров, а также свыше миллиона лайков.
+                </div>
+                <!-- создаю ниже в карточке кнопку -->
+                <div class="btnKeeper">
+                    <!-- даю ей ссылку на ютубера -->
+                    <a class="bloggersbtn" href="https://www.youtube.com/@pognalishow/featured">Перейти</a>
+                </div>
+            </div>
+            <!-- далее идет тоже самое с еще двумя ютуберами -->
+
+            <div class="card1">
+                <img class="bloggers" src="/images/channels4_profile.jpg" alt="">
+                <div class="bloggersInfo">ЗОМБИ ЧЕЗ </div>
+                <div class="bloggersInfo-sub">Канал на котором можно найти различные видосы на жуткие, а также паранормальные случаи, заснятые на камеру.Такие как:
+                    Видео, Которые Напугают 99% Людей. Странные Вещеи Снятые На Камеру. Страшных Видео Со Спиритической Доской, Снятые На Камеру. Видео, Которые Не Стоит Смотреть в Одиночку
+                    Добро пожаловать! Мистические, аномальные и "до чертиков" страшные видео. Канал "Зомби Чез" 
+                </div>
+                <div class="btnKeeper">
+                    <a class="bloggersbtn" href="https://www.youtube.com/@zombiechezz">Перейти</a>
+                </div>
+            </div>
+
+            <div class="card1">
+                <img class="bloggers" src="/images/unnamed.jpg" alt="">
+                <div class="bloggersInfo">NOSFERATU</div>
+                <div class="bloggersInfo-sub">Страшные истории на ночь, Мистические истории. ДЛЯ ВСЕХ ТЕХ, КТО ЛЮБИТ УЖАСЫ И МИСТИКУ! Всем темноты! Автор - NOSFERATU, мрачный рассказчик. Озвучивает страшные и мистические рассказы. Так же делает видео о нечисти, привидениях, демонах и сверхъестественном.
+                    ТО, ОТ ЧЕГО СТЫНЕТ КРОВЬ - рассказы о нечисти, привидениях, демонах и сверхъестественном.
+                    ПРИЯТНЫХ КОШМАРОВ!
+                </div>
+                <div class="btnKeeper">
+                    <a class="bloggersbtn" href="https://www.youtube.com/@NOSFERATU392/featured">Перейти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sectionShop">
+    <div class="section__header1">
+        <h3 class="section__suptitle1">THE DARKSIDE STORE</h3>
+        <h2 class="section__title1">Grab yourself some funny merch here!</h2>
+</div>
+    </div>
+    <div class="cardws">
+        <article class="cardw">
+            <img class="cardwPic" src="/images/ghost1-removebg-preview.png" alt="Ghostie Beanie">
+            <h2 class="card_name">Ghostie Beanie</h2>
+            <p class="card_price">9800.99 <span class="card_currency">KZT</span></p>
+            <button class="card_btn">В корзину</button>
+        </article>
+        <article class="cardw">
+            <img class="cardwPic" src="/images/ts.jpg" alt="Ghostie T-Shirt">
+            <h2 class="card_name">Ghostie T-Shirt</h2>
+            <p class="card_price">11899.00 <span class="card_currency">KZT</span></p>
+            <button class="card_btn">В корзину</button>
+        </article>
+        <article class="cardw">
+            <img class="cardwPic" src="/images/изображение_2022-12-12_005641918-removebg-preview.png" alt="Ghostie Hoodie">
+            <h2 class="card_name">Ghostie Hoodie</h2>
+            <p class="card_price">19199.00 <span class="card_currency">KZT</span></p>
+            <button class="card_btn">В корзину</button>
+        </article>
+    </div>
+    <div class="cardws">
+        <article class="cardw">
+            <img class="cardwPic" src="/images/ts2.jpg" alt="Jonny Honk’s T-Shirt">
+            <h2 class="card_name">Jonny Honk’s T-Shirt</h2>
+            <p class="card_price">12699.99 <span class="card_currency">KZT</span></p>
+            <script async
+                     src="https://js.stripe.com/v3/buy-button.js">
+        </script>
+
+            <stripe-buy-button
+                    buy-button-id="buy_btn_1MiFlJA9D9tXUcMNoz8IWvks"
+                    publishable-key="pk_test_51MfNOBA9D9tXUcMN1oQE38f8gH4Y26abIZDapkuMiuEQbvuVdQkpfyYDMCtawr9UhZ6XfkO6xVGBYJHccYl2L8Jj00mGZo1QUJ"
+            >
+            </stripe-buy-button>
+        </article>
+        <article class="cardw">
+            <img class="cardwPic" src="/images/pillow.jpg" alt="Ghostie Beanie">
+            <h2 class="card_name">Ghostie Pillow</h2>
+            <p class="card_price">13899.00 <span class="card_currency">KZT</span></p>
+            <button class="card_btn">В корзину</button>
+        </article>
+        <article class="cardw">
+            <img class="cardwPic" src="/images/cup.jpg.png" alt="Jonny Honks Mug">
+            <h2 class="card_name">Jonny Honks Mug</h2>
+            <p class="card_price">6920.99 <span class="card_currency">KZT</span></p>
+            <button class="card_btn">В корзину</button>
+        </article>
+    </div>
+    <div class="cardws">
+        <article class="cardw">
+            <img class="cardwPic" src="/images/hat.png" alt="Labyrinthine Pom Pom Beanie">
+            <h2 class="card_name">Pom Pom Beanie</h2>
+            <p class="card_price">9800.99 <span class="card_currency">KZT</span></p>
+            <button class="card_btn">В корзину</button>
+        </article>
+        <article class="cardw">
+            <img class="cardwPic" src="/images/cap.png" alt="Labyrinthine Five Panel Cap">
+            <h2 class="card_name">Labyrinthine Cap</h2>
+            <p class="card_price">10099.00 <span class="card_currency">KZT</span></p>
+            <button class="card_btn">В корзину</button>
+        </article>
+        <article class="cardw">
+            <img class="cardwPic" src="/images/hoodie.jpg.png" alt="Labyrinthine Hoodie">
+            <h2 class="card_name">Labyrinthine Hoodie</h2>
+            <p class="card_price">19199.00 <span class="card_currency">KZT</span></p>
+            <button class="card_btn">В корзину</button>
+        </article>
+    </div>
+</section>
+<script src="scripts.js"></script>
+</body>
+</html>
